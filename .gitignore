@@ -1,7 +1,7 @@
 
 ##############################################################
-# OUTPUT IN binary FOLDER
+# OUTPUT IN src/bash/output FOLDER
 ##############################################################
 
 #used to test binary
-binary/*
+src/bash/output/**
