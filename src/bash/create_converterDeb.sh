@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #######################################################################
-# CREATE PACKAGE DEB FOR CALCULATOR
+# CREATE PACKAGE DEB FOR CONVERTER
 #######################################################################
 
 #TRYING TO HAVE THIS KIND OF TREE
@@ -26,7 +26,7 @@
 
 # DIRECTORIES
 DIR=$(pwd)
-CLASS_DIR=$DIR/output/Calculator
+CLASS_DIR=$DIR/output/Converter
 PACKAGE_DEB_DIR=$CLASS_DIR/deb
 DEBIAN_DIR=$PACKAGE_DEB_DIR/DEBIAN
 USR_DIR=$PACKAGE_DEB_DIR/usr
@@ -52,12 +52,12 @@ cd $DEBIAN_DIR
 echo "===> Creating control and postinst ..."
 
 cat > control << 'EOF'
-Package: binaryCalculator
+Package: binaryConverter
 Version: 1.0.0
 Architecture: amd64
 Depends: default-jre (>= 21) | openjdk-21-jre
 Maintainer: RANDRIAMANANTSOA Heriniaina <irdnarheriniaina@gmail.com>
-Description: Java Application used to do calcul between two numbers(in binary)
+Description: Java Application used to convert decimal number into binary number
 EOF
 
 cat > postinst << 'EOF'
@@ -75,14 +75,14 @@ echo "===> "
 mkdir -p $BIN_DIR $DESKTOP_DIR $PIXMAP_DIR $ICON_DIR
 cd $BIN_DIR
 
-cat > binaryCalculator << 'EOF'
+cat > binaryConverter << 'EOF'
 #!/bin/bash
-java -jar /usr/local/bin/binaryCalculator.jar
+java -jar /usr/local/bin/binaryConverter.jar
 EOF
-chmod +x binaryCalculator
+chmod +x binaryConverter
 
-cp $(find $CLASS_DIR -name "*.jar") $BIN_DIR/binaryCalculator.jar
-cp $(find $DIR -name "binaryCalculator.png") $ICON_DIR
+cp $(find $CLASS_DIR -name "*.jar") $BIN_DIR/binaryConverter.jar
+cp $(find $DIR -name "binaryConverter.png") $ICON_DIR
 
 
 #######################################################################
@@ -91,13 +91,13 @@ cp $(find $DIR -name "binaryCalculator.png") $ICON_DIR
 
 cd $DESKTOP_DIR
 
-cat > binaryCalculator.desktop << 'EOF'
+cat > binaryConverter.desktop << 'EOF'
 [Desktop Entry]
 Type=Application
-Name=Binary Calculator
-comment=Calculator
-Exec=/usr/local/bin/binaryCalculator
-Icon=binaryCalculator.png
+Name=Binary Converter
+comment=Convert any decimal number into binary number
+Exec=/usr/local/bin/binaryConverter
+Icon=binaryConverter.png
 Categories=Accessories
 Terminal=false
 EOF
@@ -109,7 +109,7 @@ echo "===> creating package deb ..."
 # 
 #######################################################################
 
-cp $(find $ICON_DIR -name "binaryCalculator.png") $PIXMAP_DIR
+cp $(find $ICON_DIR -name "binaryConverter.png") $PIXMAP_DIR
 
 #######################################################################
 # 
@@ -123,6 +123,6 @@ echo "===> building deb package ..."
 dpkg-deb --root-owner-group --build deb/
 
 echo "===> renaming output ..."
-mv deb.deb binary-calculator_v1.0.0_amd64.deb
+mv deb.deb binary-converter_v1.0.0_amd64.deb
 
 echo "DONE !"
