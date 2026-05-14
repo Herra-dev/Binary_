@@ -4,7 +4,7 @@
 # SCRIPT TO CREATE JAR ARCHIVE FOR BINARY CONVERTER * FOR LINUX
 #######################################################################
 
-CLASS_DIR=$(pwd)/output/Converter
+CLASS_DIR=$(pwd)/output/Convertor
 MANIFEST_DIR=$CLASS_DIR/META-INF
 
 #######################################################################

@@ -47,13 +47,13 @@ public class DecimalToBinary extends abstractBinary implements ActionListener {
 //====================================================================================================
 
     public void _setDecimalToBinaryProperties() {
-        this.setTitle("Decimal to Binary Converter");
+        this.setTitle("Decimal to Binary Convertor");
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.add(this._mainPanel);
         this.setMinimumSize(new Dimension(400, 700));
 
-        ImageIcon icon = new ImageIcon("../iconConvertor.png");
+        ImageIcon icon = new ImageIcon("/usr/local/bin/assets/binaryConvertor.png");
         this.setIconImage(icon.getImage());
     }
 

@@ -27,7 +27,7 @@
 # DIRECTORIES
 DIR=$(pwd)
 CLASS_DIR=$DIR/output/Calculator
-PACKAGE_DEB_DIR=$CLASS_DIR/deb
+PACKAGE_DEB_DIR=$CLASS_DIR/calculator-deb-package
 DEBIAN_DIR=$PACKAGE_DEB_DIR/DEBIAN
 USR_DIR=$PACKAGE_DEB_DIR/usr
 BIN_DIR=$USR_DIR/local/bin
@@ -98,7 +98,7 @@ Name=Binary Calculator
 comment=Calculator
 Exec=/usr/local/bin/binaryCalculator
 Icon=binaryCalculator.png
-Categories=Accessories
+Categories=Other
 Terminal=false
 EOF
 
@@ -120,9 +120,9 @@ cd $CLASS_DIR
 
 echo "===> building deb package ..."
 
-dpkg-deb --root-owner-group --build deb/
+dpkg-deb --root-owner-group --build $PACKAGE_DEB_DIR
 
 echo "===> renaming output ..."
-mv deb.deb binary-calculator_v1.0.0_amd64.deb
+mv $(find -type f -name "*.deb") binary-calculator_v1.0.0_amd64.deb
 
 echo "DONE !"

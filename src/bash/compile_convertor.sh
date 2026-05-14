@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-CLASS_DIR=$(pwd)/output/Converter
+CLASS_DIR=$(pwd)/output/Convertor
 SRC_DIR=$(pwd)/..
 
 # #######################################################

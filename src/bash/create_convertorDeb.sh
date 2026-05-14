@@ -26,8 +26,8 @@
 
 # DIRECTORIES
 DIR=$(pwd)
-CLASS_DIR=$DIR/output/Converter
-PACKAGE_DEB_DIR=$CLASS_DIR/deb
+CLASS_DIR=$DIR/output/Convertor
+PACKAGE_DEB_DIR=$CLASS_DIR/convertor-deb-package
 DEBIAN_DIR=$PACKAGE_DEB_DIR/DEBIAN
 USR_DIR=$PACKAGE_DEB_DIR/usr
 BIN_DIR=$USR_DIR/local/bin
@@ -52,7 +52,7 @@ cd $DEBIAN_DIR
 echo "===> Creating control and postinst ..."
 
 cat > control << 'EOF'
-Package: binaryConverter
+Package: binaryConvertor
 Version: 1.0.0
 Architecture: amd64
 Depends: default-jre (>= 21) | openjdk-21-jre
@@ -75,14 +75,14 @@ echo "===> "
 mkdir -p $BIN_DIR $DESKTOP_DIR $PIXMAP_DIR $ICON_DIR
 cd $BIN_DIR
 
-cat > binaryConverter << 'EOF'
+cat > binaryConvertor << 'EOF'
 #!/bin/bash
-java -jar /usr/local/bin/binaryConverter.jar
+java -jar /usr/local/bin/binaryConvertor.jar
 EOF
-chmod +x binaryConverter
+chmod +x binaryConvertor
 
-cp $(find $CLASS_DIR -name "*.jar") $BIN_DIR/binaryConverter.jar
-cp $(find $DIR -name "binaryConverter.png") $ICON_DIR
+cp $(find $CLASS_DIR -name "*.jar") $BIN_DIR/binaryConvertor.jar
+cp $(find $DIR -name "binaryConvertor.png") $ICON_DIR
 
 
 #######################################################################
@@ -91,14 +91,14 @@ cp $(find $DIR -name "binaryConverter.png") $ICON_DIR
 
 cd $DESKTOP_DIR
 
-cat > binaryConverter.desktop << 'EOF'
+cat > binaryConvertor.desktop << 'EOF'
 [Desktop Entry]
 Type=Application
-Name=Binary Converter
+Name=Binary Convertor
 comment=Convert any decimal number into binary number
-Exec=/usr/local/bin/binaryConverter
-Icon=binaryConverter.png
-Categories=Accessories
+Exec=/usr/local/bin/binaryConvertor
+Icon=binaryConvertor.png
+Categories=Other
 Terminal=false
 EOF
 
@@ -109,7 +109,7 @@ echo "===> creating package deb ..."
 # 
 #######################################################################
 
-cp $(find $ICON_DIR -name "binaryConverter.png") $PIXMAP_DIR
+cp $(find $ICON_DIR -name "binaryConvertor.png") $PIXMAP_DIR
 
 #######################################################################
 # 
@@ -120,9 +120,9 @@ cd $CLASS_DIR
 
 echo "===> building deb package ..."
 
-dpkg-deb --root-owner-group --build deb/
+dpkg-deb --root-owner-group --build $PACKAGE_DEB_DIR
 
 echo "===> renaming output ..."
-mv deb.deb binary-converter_v1.0.0_amd64.deb
+mv $(find -type f -name "*.deb") binary-convertor_v1.0.0_amd64.deb
 
 echo "DONE !"
