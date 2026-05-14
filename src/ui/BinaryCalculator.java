@@ -45,9 +45,8 @@ public class BinaryCalculator extends abstractBinary implements ActionListener {
         this.add(this._mainPanel);
         this.setMinimumSize(new Dimension(400, 700));
         
-        ImageIcon icon = new ImageIcon("../iconCalculator.png");
+        ImageIcon icon = new ImageIcon("/usr/local/bin/assets/binaryCalculator.png");
         this.setIconImage(icon.getImage());
-        
     }
 
 //====================================================================================================
