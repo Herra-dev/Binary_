@@ -52,12 +52,14 @@ cd $DEBIAN_DIR
 echo "===> Creating control and postinst ..."
 
 cat > control << 'EOF'
-Package: binaryConvertor
+Package: binaryconvertor
 Version: 1.0.0
 Architecture: amd64
 Depends: default-jre (>= 21) | openjdk-21-jre
 Maintainer: RANDRIAMANANTSOA Heriniaina <irdnarheriniaina@gmail.com>
 Description: Java Application used to convert decimal number into binary number
+Section: java
+Priority: optional
 EOF
 
 cat > postinst << 'EOF'
@@ -75,14 +77,14 @@ echo "===> "
 mkdir -p $BIN_DIR $DESKTOP_DIR $PIXMAP_DIR $ICON_DIR
 cd $BIN_DIR
 
-cat > binaryConvertor << 'EOF'
+cat > binaryconvertor << 'EOF'
 #!/bin/bash
-java -jar /usr/local/bin/binaryConvertor.jar
+java -jar /usr/local/bin/binaryconvertor.jar
 EOF
-chmod +x binaryConvertor
+chmod +x binaryconvertor
 
-cp $(find $CLASS_DIR -name "*.jar") $BIN_DIR/binaryConvertor.jar
-cp $(find $DIR -name "binaryConvertor.png") $ICON_DIR
+cp $(find $CLASS_DIR -name "*.jar") $BIN_DIR/binaryconvertor.jar
+cp $(find $DIR -name "binaryconvertor.png") $ICON_DIR
 
 
 #######################################################################
@@ -91,13 +93,13 @@ cp $(find $DIR -name "binaryConvertor.png") $ICON_DIR
 
 cd $DESKTOP_DIR
 
-cat > binaryConvertor.desktop << 'EOF'
+cat > binaryconvertor.desktop << 'EOF'
 [Desktop Entry]
 Type=Application
 Name=Binary Convertor
 comment=Convert any decimal number into binary number
-Exec=/usr/local/bin/binaryConvertor
-Icon=binaryConvertor.png
+Exec=/usr/local/bin/binaryconvertor
+Icon=binaryconvertor.png
 Categories=Other
 Terminal=false
 EOF
@@ -109,7 +111,7 @@ echo "===> creating package deb ..."
 # 
 #######################################################################
 
-cp $(find $ICON_DIR -name "binaryConvertor.png") $PIXMAP_DIR
+cp $(find $ICON_DIR -name "binaryconvertor.png") $PIXMAP_DIR
 
 #######################################################################
 # 

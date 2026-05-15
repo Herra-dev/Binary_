@@ -52,12 +52,14 @@ cd $DEBIAN_DIR
 echo "===> Creating control and postinst ..."
 
 cat > control << 'EOF'
-Package: binaryCalculator
+Package: binarycalculator
 Version: 1.0.0
 Architecture: amd64
 Depends: default-jre (>= 21) | openjdk-21-jre
 Maintainer: RANDRIAMANANTSOA Heriniaina <irdnarheriniaina@gmail.com>
 Description: Java Application used to do calcul between two numbers(in binary)
+Section: java
+Priority: optional
 EOF
 
 cat > postinst << 'EOF'
@@ -75,14 +77,14 @@ echo "===> "
 mkdir -p $BIN_DIR $DESKTOP_DIR $PIXMAP_DIR $ICON_DIR
 cd $BIN_DIR
 
-cat > binaryCalculator << 'EOF'
+cat > binarycalculator << 'EOF'
 #!/bin/bash
-java -jar /usr/local/bin/binaryCalculator.jar
+java -jar /usr/local/bin/binarycalculator.jar
 EOF
-chmod +x binaryCalculator
+chmod +x binarycalculator
 
-cp $(find $CLASS_DIR -name "*.jar") $BIN_DIR/binaryCalculator.jar
-cp $(find $DIR -name "binaryCalculator.png") $ICON_DIR
+cp $(find $CLASS_DIR -name "*.jar") $BIN_DIR/binarycalculator.jar
+cp $(find $DIR -name "binarycalculator.png") $ICON_DIR
 
 
 #######################################################################
@@ -91,13 +93,13 @@ cp $(find $DIR -name "binaryCalculator.png") $ICON_DIR
 
 cd $DESKTOP_DIR
 
-cat > binaryCalculator.desktop << 'EOF'
+cat > binarycalculator.desktop << 'EOF'
 [Desktop Entry]
 Type=Application
 Name=Binary Calculator
 comment=Calculator
-Exec=/usr/local/bin/binaryCalculator
-Icon=binaryCalculator.png
+Exec=/usr/local/bin/binarycalculator
+Icon=binarycalculator.png
 Categories=Other
 Terminal=false
 EOF
@@ -109,7 +111,7 @@ echo "===> creating package deb ..."
 # 
 #######################################################################
 
-cp $(find $ICON_DIR -name "binaryCalculator.png") $PIXMAP_DIR
+cp $(find $ICON_DIR -name "binarycalculator.png") $PIXMAP_DIR
 
 #######################################################################
 # 
