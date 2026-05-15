@@ -33,9 +33,9 @@
 #### Download binary convertor [here](https://github.com/Herra-dev/Binary_/releases/tag/v1.0.0-beta)
 #### Download binary calculator [here](https://github.com/Herra-dev/Binary_/releases/tag/calculator-v1.0.0-beta)
 #### Change directory (cd) to the folder where your downloaded the deb package: 
-#### install via dpkg:
+#### install via dpkg(change package-name.deb by the name of file you downloaded):
     sudo dpkg -i package-name.deb
-#### install via apt:
+#### install via apt(change package-name.deb by the name of file you downloaded):
     sudo apt install ./package-name.deb
 
 ## How to uninstall:
