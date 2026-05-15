@@ -8,8 +8,8 @@
 
 ## UI
 
-### convertor ![binary convertor](https://github.com/Herra-dev/Herra-dev-applications-pics/blob/main/java/binaryconvertor.png)
-### calculator ![binary calculator](https://github.com/Herra-dev/Herra-dev-applications-pics/blob/main/java/binarycalculator.png)
+### convertor ![binary convertor](https://github.com/Herra-dev/Herra-dev-applications-pics/blob/main/java/ui/binaryconvertorint.png)
+### calculator ![binary calculator](https://github.com/Herra-dev/Herra-dev-applications-pics/blob/main/java/ui/binarycalculator.png)
 
 ### Used languages:
 1. Java
